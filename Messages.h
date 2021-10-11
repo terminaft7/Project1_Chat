@@ -1,19 +1,26 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class Messages
 {
 
 public : 
-	int counter;
-	void createArray();
+	void setCounter();
+	int getCounter();
+	void initializeArray();
 	void writetoArray(string message, string* message_array);
-
-protected :
+	void sendMessage(string message, string nickname);
+	void showlastMessage(string nickname);
+	std::vector<std::string> messageArray{};
+	string receiver{"          "};
 	
 
+protected :
+	//std::vector<std::string> messageArray{};
+	int counter = 0;
 
 };
 
