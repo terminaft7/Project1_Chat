@@ -10,10 +10,7 @@ int main()
     char action('a');
     User userArray[10];
     Messages messageArray;
-   // messageArray.initializeArray();
-   // for (int i(0); i < 100; i++) {
-    //    messageArray[i] = "0";
-   // }
+
     int userCount(0);
 
     while (action != 'q')
@@ -30,6 +27,7 @@ int main()
         string password;
         string name;
         char message[100];
+        int ind(0);
         
 
 
@@ -43,19 +41,22 @@ int main()
             cin >> password;
             //1.здесь отправляем никнейм и пароль на проверку в класс user(nickname, password);
             //2. если всё ок, подключаем метод отправки сообщений array(messages); как-то так
-           // Messages messageArray;
-            //User name;
-            userArray[0].checkUser(nickname, password, userArray, userCount);
-            messageArray.showlastMessage(nickname);
-            cout << "enter message" << endl;
-            cin.ignore();
-            std::cin.getline(message, 100);
-            messageArray.sendMessage(message, nickname);
-          
 
-            break;
+            ind = userArray[0].checkUser(nickname, password, userArray, userCount);
+            if (ind == 1) {
+
+                messageArray.showlastMessage(nickname);
+              //  cout << "Write @ and user name, then write your message. E.g. @Luke I am your father." << endl;
+                cin.ignore();
+                std::cin.getline(message, 100);
+                messageArray.sendMessage(message, nickname);
+                break;
+            }
+            else break;
+
+           // if (ind == 0) break;
         case '2':
-           // User User1;
+      
             cout << "Enter your name" << endl;
             cin >> name;
             cout << "Enter your nickname" << endl;
@@ -67,14 +68,13 @@ int main()
             name.setpassword(password);
             name.addtoUserArray(name, userArray, userCount);
             userCount++;
-           // User1.createUserArray();
-           // User1.createUser(nickname, password);
-            cout << "enter message" << endl;
+
+            cout << "Write @ and user name, then write your message. E.g. @Luke I am your father." << endl;
             cin.ignore();
             std::cin.getline(message, 100);
             
             messageArray.sendMessage(message, nickname);
-            //User1.sendMessage(message);
+       
 
             //в данном случае мы снова приняли nickname и password, но они будут использованы для запуска конструктора для нового User'a
                 // просьбу ввести пароль второй раз для надёжности реализуем потом

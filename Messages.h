@@ -19,7 +19,7 @@ public :
 	
 
 protected :
-	//std::vector<std::string> messageArray{};
+
 	int counter = 0;
 
 };
