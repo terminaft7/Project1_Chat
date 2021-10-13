@@ -18,6 +18,7 @@ public :
     string getnickname();
     string getpassword();
     void addtoUserArray(User name, User *userArray, int userCount);
+    //void showUsers(int userCount);
     int counter = 0;
 
 protected : 

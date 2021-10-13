@@ -59,7 +59,7 @@ void Messages::showlastMessage(string nickname)
 	int ind(0);
 	for (int i(0); i < messageArray.size(); i++) {
 		string at_nickname = " @" + nickname;
-		if (messageArray[i].find(at_nickname) != string::npos){
+		if ((messageArray[i].find(at_nickname) != string::npos) || (messageArray[i].find(" @all") != string::npos)){
 			cout << messageArray[i] << endl;
 			ind++;
 		}

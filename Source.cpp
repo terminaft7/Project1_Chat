@@ -40,7 +40,7 @@ int main()
             cout << "Enter your password" << endl;
             cin >> password;
             //1.здесь отправляем никнейм и пароль на проверку в класс user(nickname, password);
-            //2. если всё ок, подключаем метод отправки сообщений array(messages); как-то так
+            //2. если всё ок, подключаем метод отправки сообщений sendMessage в классе Messages; как-то так
 
             ind = userArray[0].checkUser(nickname, password, userArray, userCount);
             if (ind == 1) {
@@ -70,17 +70,14 @@ int main()
             userCount++;
 
             cout << "Write @ and user name, then write your message. E.g. @Luke I am your father." << endl;
+            cout << "Write @all to send message to all users." << endl;
             cin.ignore();
             std::cin.getline(message, 100);
             
             messageArray.sendMessage(message, nickname);
        
-
-            //в данном случае мы снова приняли nickname и password, но они будут использованы для запуска конструктора для нового User'a
-                // просьбу ввести пароль второй раз для надёжности реализуем потом
             break;
-
-
+      
             return 0;
         }
     }

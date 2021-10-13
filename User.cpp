@@ -37,6 +37,18 @@ int User::checkUser(string nickname, string password, User *userArray, int userC
 	cout << "Login failed. Try again." << endl;
 	return 0;
 	}
+
+/*
+void User::showUsers(int userCount, User* userArray) {
+	if (userCount == 0)
+		cout << "No users" << endl;
+	if (userCount > 0) {
+		for (int i(0); i < userCount; i++) {
+
+			cout << userArray[i].getnickname(userArray[i].nickname) << endl;
+		}
+	}
+}*/
 	
 
 void User::createUserArray() {
