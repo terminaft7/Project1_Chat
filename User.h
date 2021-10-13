@@ -7,10 +7,7 @@ using namespace std;
 class User 
 {
 public : 
-    int checkUser(string nickname, string password, User* userArray, int userCount);
-    
-    void createUserArray();
-
+    int checkUser(string nickname, string password, User* userArray, int userCount); 
     void setnickname(string nickname);
     void setpassword(string password);
     void setUsercount();
@@ -18,7 +15,7 @@ public :
     string getnickname();
     string getpassword();
     void addtoUserArray(User name, User *userArray, int userCount);
-    //void showUsers(int userCount);
+    void showUsers(int userCount, User* userArray);
     int counter = 0;
 
 protected : 

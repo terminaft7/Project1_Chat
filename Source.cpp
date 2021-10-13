@@ -18,6 +18,7 @@ int main()
 
         cout << "Press 1 to login with your nickname and password " << endl;
         cout << "Press 2 to create new user " << endl;
+        cout << "Press 3 to see all users." << endl;
         cout << "Press q to quit" << endl;
         cin >> action;
 
@@ -46,7 +47,7 @@ int main()
             if (ind == 1) {
 
                 messageArray.showlastMessage(nickname);
-              //  cout << "Write @ and user name, then write your message. E.g. @Luke I am your father." << endl;
+                //  cout << "Write @ and user name, then write your message. E.g. @Luke I am your father." << endl;
                 cin.ignore();
                 std::cin.getline(message, 100);
                 messageArray.sendMessage(message, nickname);
@@ -54,9 +55,13 @@ int main()
             }
             else break;
 
-           // if (ind == 0) break;
-        case '2':
-      
+           
+        case '2': {
+            if (userCount == 10) {
+                cout << "New users are not possible." << endl;
+                break;
+            }
+
             cout << "Enter your name" << endl;
             cin >> name;
             cout << "Enter your nickname" << endl;
@@ -71,13 +76,25 @@ int main()
 
             cout << "Write @ and user name, then write your message. E.g. @Luke I am your father." << endl;
             cout << "Write @all to send message to all users." << endl;
+
             cin.ignore();
             std::cin.getline(message, 100);
-            
             messageArray.sendMessage(message, nickname);
-       
-            break;
-      
+            break; }
+
+        case '3':
+
+            if (userCount == 0)
+            {
+                cout << "No users";
+                break;
+            }
+            else if (userCount > 0)
+            {
+                userArray[0].showUsers(userCount, userArray);
+                break;
+            }  
+
             return 0;
         }
     }

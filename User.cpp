@@ -38,23 +38,24 @@ int User::checkUser(string nickname, string password, User *userArray, int userC
 	return 0;
 	}
 
-/*
-void User::showUsers(int userCount, User* userArray) {
-	if (userCount == 0)
-		cout << "No users" << endl;
-	if (userCount > 0) {
-		for (int i(0); i < userCount; i++) {
 
-			cout << userArray[i].getnickname(userArray[i].nickname) << endl;
+void User::showUsers(int userCount, User* userArray) {
+	/*if (userCount == 0)
+		cout << "No users" << endl;
+	if (userCount > 0) { */
+		string usernickname;
+		for (int i(0); i < userCount; i++) {
+			usernickname = userArray[i].getnickname();
+			cout << usernickname << endl;
 		}
 	}
-}*/
+//}
 	
 
-void User::createUserArray() {
+//void User::createUserArray() {
 
-	User userArray[10];
-}
+	//User userArray[10];
+//}
 
 void User::addtoUserArray(User name, User *userArray, int userCount) {
 	
