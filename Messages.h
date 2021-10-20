@@ -8,19 +8,20 @@ class Messages
 {
 
 public : 
-	void setCounter();
-	int getCounter();
-	void initializeArray();
-	void writetoArray(string message, string* message_array);
-	void sendMessage(string message, string nickname);
-	void showlastMessage(string nickname);
-	std::vector<std::string> messageArray{};
-	string receiver{"          "};
+
+	void showlastMessage(string nickname, vector <Messages> messageArray, string receiver);
+	void setFrom(string nickname);
+	void setTo_whom(string nickname);
+	void writeMessage(string message);
+	string getFrom();
+	string getTo_whom();
+	string getMessage();
 	
 
 protected :
 
-	int counter = 0;
-
+	string from;
+	string to_whom;
+	string message;
 };
 

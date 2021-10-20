@@ -1,6 +1,7 @@
 ﻿#include <iostream> 
 #include "Messages.h"
 #include "User.h"
+#include "Userpool.h"
 #include <vector>
 using namespace std;
 
@@ -8,16 +9,14 @@ using namespace std;
 int main()
 {
     char action('a');
-    User userArray[10];
-    Messages messageArray;
-
-    int userCount(0);
+    vector<Messages> messageArray;
+    Userpool Userpool_vect;
 
     while (action != 'q')
     {
 
         cout << "Press 1 to login with your nickname and password " << endl;
-        cout << "Press 2 to create new user " << endl;
+        cout << "Press 2 to create new user and send message " << endl;
         cout << "Press 3 to see all users." << endl;
         cout << "Press q to quit" << endl;
         cin >> action;
@@ -27,71 +26,83 @@ int main()
         string nickname;
         string password;
         string name;
+        string receiver;
         char message[100];
         int ind(0);
         
-
-
         switch (action)
         {
         case '1':
-
+            if (messageArray.empty()) {
+                cout << "There are no users or messages. Please create a new user." << endl;
+                break;
+            }
             cout << "Enter your nickname" << endl;
             cin >> nickname;
             cout << "Enter your password" << endl;
             cin >> password;
-            //1.здесь отправляем никнейм и пароль на проверку в класс user(nickname, password);
-            //2. если всё ок, подключаем метод отправки сообщений sendMessage в классе Messages; как-то так
+                   
 
-            ind = userArray[0].checkUser(nickname, password, userArray, userCount);
+            ind = Userpool_vect.checkUser(nickname, password);
             if (ind == 1) {
-
-                messageArray.showlastMessage(nickname);
-                //  cout << "Write @ and user name, then write your message. E.g. @Luke I am your father." << endl;
+                cout << "Enter receiver" << endl;
+                cin >> receiver;
+                messageArray[0].showlastMessage(nickname, messageArray, receiver);
                 cin.ignore();
                 std::cin.getline(message, 100);
-                messageArray.sendMessage(message, nickname);
+                Messages obj;
+                obj.setFrom(nickname);
+                obj.setTo_whom(receiver);
+                obj.writeMessage(message);
+                messageArray.push_back(obj);
+           
                 break;
             }
             else break;
 
            
         case '2': {
-            if (userCount == 10) {
-                cout << "New users are not possible." << endl;
-                break;
-            }
 
             cout << "Enter your name" << endl;
             cin >> name;
             cout << "Enter your nickname" << endl;
             cin >> nickname;
+            if (nickname == "all") {
+                cout << "This nickname is not allowed. Please try again." << endl;
+                break;
+            }
             cout << "Enter your password" << endl;
             cin >> password;
             User name;
+            Messages obj;
             name.setnickname(nickname);
             name.setpassword(password);
-            name.addtoUserArray(name, userArray, userCount);
-            userCount++;
+            Userpool_vect.addUser(name);
+                 
 
-            cout << "Write @ and user name, then write your message. E.g. @Luke I am your father." << endl;
-            cout << "Write @all to send message to all users." << endl;
-
+            cout << "Type receiver, type enter, then type your message." << endl;
+            cout << "Write all as a receiver to send message to all users." << endl;
+            cout << "Enter receiver" << endl;
+            cin >> receiver;
             cin.ignore();
             std::cin.getline(message, 100);
-            messageArray.sendMessage(message, nickname);
+            obj.setFrom(nickname);
+            obj.setTo_whom(receiver);
+            obj.writeMessage(message);
+            messageArray.push_back(obj);
+                      
             break; }
 
         case '3':
 
-            if (userCount == 0)
+            if (Userpool_vect.Userpool_vect.empty())
             {
-                cout << "No users";
+                cout << "No users" << endl;
                 break;
             }
-            else if (userCount > 0)
+            else if (!Userpool_vect.Userpool_vect.empty())
             {
-                userArray[0].showUsers(userCount, userArray);
+                Userpool_vect.showUsers();
                 break;
             }  
 

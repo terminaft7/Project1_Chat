@@ -4,70 +4,46 @@
 #include <vector>
 using namespace std;
 
-//надо создать массив для стрингов и проинициализировать его (наверное), чтобы там не было мусора
-void Messages::initializeArray() 
-{
-	
-	for (int i = 0; i < 100; i++) {
-		messageArray[i] = "0";
-	}
+
+void Messages::setFrom(string nickname) {
+	from = nickname;
+}
+void Messages::setTo_whom(string nickname) {
+	to_whom = nickname;
 }
 
-void Messages::writetoArray(string message, string* message_array) 
-{
-	
-	setCounter();
-	int counter = getCounter();
-	message_array[counter] = {message};
-
+void Messages::writeMessage(string _message) {
+	message = _message;
+}
+string Messages::getFrom() {
+	return from;
+}
+string Messages::getTo_whom() {
+	return to_whom;
 }
 
-void Messages::setCounter() {
-	counter++;
+string Messages::getMessage() {
+	return message;
 }
 
-int Messages::getCounter() {
-	return counter;
-}
-
-void Messages::sendMessage(string message, string nickname)
-{/*
-	if (message[0] == '@') {
-
-	
-		int j = message.size();
-		int i(1);
-		while (message[i] != ' ') {
-			receiver[i - 1] = message[i];
-			i++;
-			if (message[i] == ' ')
-				break;
-
-		}
-} */
-
-	string full_message = "from: " + nickname + " " + message;
-	messageArray.push_back(full_message);
-	setCounter();
-	int ind = getCounter();
-
-	//cout << "it works" << messageArray[ind-1] << endl;
-}
-
-void Messages::showlastMessage(string nickname) 
+void Messages::showlastMessage(string nickname, vector <Messages> messageArray, string receiver)
 {
 	int ind(0);
 	for (int i(0); i < messageArray.size(); i++) {
-		string at_nickname = " @" + nickname;
-		if ((messageArray[i].find(at_nickname) != string::npos) || (messageArray[i].find(" @all") != string::npos)){
-			cout << messageArray[i] << endl;
+
+		if ((messageArray[i].to_whom == nickname && messageArray[i].from == receiver) || messageArray[i].to_whom == "all") {
+			cout << "from " << messageArray[i].from << " : " << messageArray[i].message << endl;
+			ind++;
+		}
+
+		if (receiver != "all" && messageArray[i].to_whom == receiver && messageArray[i].from == nickname) {
+			cout << "from " << messageArray[i].from << " : " << messageArray[i].message << endl;
 			ind++;
 		}
 	}
-	
+
+
 	if (ind == 0) {
 		cout << "No messages. Start a conversation!" << endl;
 	}
-	
 }
-
