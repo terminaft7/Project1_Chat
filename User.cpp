@@ -1,22 +1,22 @@
 #include "User.h"
 #include <string>
 #include <iostream>
-#include "Messages.h"
+#include "Message.h"
 #include <vector>
 using namespace std;
-
+/*
 void User::setnickname(string _nickname) {
-	nickname = _nickname;
+	nickname_ = _nickname;
 }
-
+*/
 string User::getnickname() {
-	return nickname;
+	return nickname_;
 }
-
+/*
 void User::setpassword(string _password) {
-	password = _password;
+	password_ = _password;
 }
-
+*/
 string User::getpassword() {
-	return password;
+	return password_;
 }

@@ -8,14 +8,16 @@ class User
 {
 public : 
   
-    void setnickname(string nickname);
-    void setpassword(string password);
+    User() = default;
+    User(const string& nickname, const string& password) : nickname_(nickname), password_(password) {};
+   // void setnickname(string nickname);
+  //  void setpassword(string password);
     string getnickname();
     string getpassword();
 
 protected : 
-    string nickname;
-    string password;
+    string nickname_;
+    string password_;
 
 
     

@@ -1,5 +1,5 @@
 ﻿#include <iostream> 
-#include "Messages.h"
+#include "Message.h"
 #include "User.h"
 #include "Userpool.h"
 #include <vector>
@@ -9,7 +9,7 @@ using namespace std;
 int main()
 {
     char action('a');
-    vector<Messages> messageArray;
+    vector<Message> messageArray;
     Userpool Userpool_vect;
 
     while (action != 'q')
@@ -44,17 +44,18 @@ int main()
                    
 
             ind = Userpool_vect.checkUser(nickname, password);
-            if (ind == 1) {
+            if (ind == true) {
                 cout << "Enter receiver" << endl;
                 cin >> receiver;
                 messageArray[0].showlastMessage(nickname, messageArray, receiver);
                 cin.ignore();
                 std::cin.getline(message, 100);
-                Messages obj;
-                obj.setFrom(nickname);
-                obj.setTo_whom(receiver);
-                obj.writeMessage(message);
-                messageArray.push_back(obj);
+               // Message obj;
+                messageArray.push_back(Message(nickname, receiver, message));
+               // obj.setFrom(nickname);
+                //obj.setTo_whom(receiver);
+                //obj.writeMessage(message);
+                //messageArray.push_back(obj);
            
                 break;
             }
@@ -63,8 +64,8 @@ int main()
            
         case '2': {
 
-            cout << "Enter your name" << endl;
-            cin >> name;
+           // cout << "Enter your name" << endl;
+            //cin >> name;
             cout << "Enter your nickname" << endl;
             cin >> nickname;
             if (nickname == "all") {
@@ -73,23 +74,24 @@ int main()
             }
             cout << "Enter your password" << endl;
             cin >> password;
-            User name;
-            Messages obj;
-            name.setnickname(nickname);
-            name.setpassword(password);
-            Userpool_vect.addUser(name);
+           // User name;
+            //Message obj;
+          //  name.setnickname(nickname);
+           // name.setpassword(password);
+           // Userpool_vect.addUser(name);
+            Userpool_vect.addUser(User(nickname, password));
                  
-
             cout << "Type receiver, type enter, then type your message." << endl;
             cout << "Write all as a receiver to send message to all users." << endl;
             cout << "Enter receiver" << endl;
             cin >> receiver;
             cin.ignore();
             std::cin.getline(message, 100);
-            obj.setFrom(nickname);
-            obj.setTo_whom(receiver);
-            obj.writeMessage(message);
-            messageArray.push_back(obj);
+            messageArray.push_back(Message(nickname, receiver, message));
+          //  obj.setFrom(nickname);
+           // obj.setTo_whom(receiver);
+            //obj.writeMessage(message);
+            //messageArray.push_back(obj);
                       
             break; }
 
@@ -100,13 +102,14 @@ int main()
                 cout << "No users" << endl;
                 break;
             }
-            else if (!Userpool_vect.Userpool_vect.empty())
+            else //(!Userpool_vect.Userpool_vect.empty())
             {
                 Userpool_vect.showUsers();
                 break;
             }  
 
-            return 0;
+           // return 0;
+        default: break;
         }
     }
 }

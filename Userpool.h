@@ -9,7 +9,7 @@ class Userpool {
 public:
 	void addUser(User username);
 	vector<User> Userpool_vect;
-	int checkUser(string nickname, string password);
+	bool checkUser(string& nickname, string& password);
 	void showUsers();
 
 protected:

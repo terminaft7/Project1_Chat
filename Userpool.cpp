@@ -1,7 +1,7 @@
 #include "User.h"
 #include <string>
 #include <iostream>
-#include "Messages.h"
+#include "Message.h"
 #include <vector>
 using namespace std;
 #include "Userpool.h"
@@ -10,18 +10,18 @@ void Userpool::addUser(User username) {
 	Userpool_vect.push_back(username);
 }
 
-int Userpool::checkUser(string nickname, string password) {
+bool Userpool::checkUser(string& nickname, string& password) {
 	if (!Userpool_vect.empty()) {
-		for (int i(0); i < Userpool_vect.size(); i++) {
+		for (auto& u : Userpool_vect) {
 
-			if ((Userpool_vect[i].getnickname() == nickname) && (Userpool_vect[i].getpassword() == password)) {
+			if ((u.getnickname() == nickname) && (u.getpassword() == password)) {
 				cout << "Login successful. " << endl;
-				return 1;
+				return true;
 			}
 		}
 	}
 	cout << "Login failed. Try again." << endl;
-	return 0;
+	return false;
 }
 
 void Userpool::showUsers() {
