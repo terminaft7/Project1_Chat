@@ -102,11 +102,10 @@ int main()
                 cout << "No users" << endl;
                 break;
             }
-            else //(!Userpool_vect.Userpool_vect.empty())
-            {
-                Userpool_vect.showUsers();
-                break;
-            }  
+            
+            Userpool_vect.showUsers();
+            break;
+             
 
            // return 0;
         default: break;

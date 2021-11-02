@@ -1,16 +1,15 @@
 #include "User.h"
 #include <string>
 #include <iostream>
-#include "Message.h"
 #include <vector>
 using namespace std;
 #include "Userpool.h"
 
-void Userpool::addUser(User username) {
+void Userpool::addUser(const User& username) {
 	Userpool_vect.push_back(username);
 }
 
-bool Userpool::checkUser(string& nickname, string& password) {
+bool Userpool::checkUser(const string& nickname, const string& password) {
 	if (!Userpool_vect.empty()) {
 		for (auto& u : Userpool_vect) {
 

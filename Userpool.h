@@ -7,9 +7,9 @@ using namespace std;
 
 class Userpool {
 public:
-	void addUser(User username);
+	void addUser(const User& username);
 	vector<User> Userpool_vect;
-	bool checkUser(string& nickname, string& password);
+	bool checkUser(const string& nickname, const string& password);
 	void showUsers();
 
 protected:
