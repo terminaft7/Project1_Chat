@@ -14,7 +14,6 @@ int main()
 
     while (action != 'q')
     {
-
         cout << "Press 1 to login with your nickname and password " << endl;
         cout << "Press 2 to create new user and send message " << endl;
         cout << "Press 3 to see all users." << endl;
@@ -41,7 +40,6 @@ int main()
             cin >> nickname;
             cout << "Enter your password" << endl;
             cin >> password;
-                   
 
             ind = Userpool_vect.checkUser(nickname, password);
             if (ind == true) {
@@ -50,22 +48,14 @@ int main()
                 messageArray[0].showlastMessage(nickname, messageArray, receiver);
                 cin.ignore();
                 std::cin.getline(message, 100);
-               // Message obj;
                 messageArray.push_back(Message(nickname, receiver, message));
-               // obj.setFrom(nickname);
-                //obj.setTo_whom(receiver);
-                //obj.writeMessage(message);
-                //messageArray.push_back(obj);
-           
+                           
                 break;
             }
             else break;
-
-           
+                       
         case '2': {
 
-           // cout << "Enter your name" << endl;
-            //cin >> name;
             cout << "Enter your nickname" << endl;
             cin >> nickname;
             if (nickname == "all") {
@@ -74,11 +64,7 @@ int main()
             }
             cout << "Enter your password" << endl;
             cin >> password;
-           // User name;
-            //Message obj;
-          //  name.setnickname(nickname);
-           // name.setpassword(password);
-           // Userpool_vect.addUser(name);
+
             Userpool_vect.addUser(User(nickname, password));
                  
             cout << "Type receiver, type enter, then type your message." << endl;
@@ -88,10 +74,6 @@ int main()
             cin.ignore();
             std::cin.getline(message, 100);
             messageArray.push_back(Message(nickname, receiver, message));
-          //  obj.setFrom(nickname);
-           // obj.setTo_whom(receiver);
-            //obj.writeMessage(message);
-            //messageArray.push_back(obj);
                       
             break; }
 
@@ -106,8 +88,6 @@ int main()
             Userpool_vect.showUsers();
             break;
              
-
-           // return 0;
         default: break;
         }
     }
